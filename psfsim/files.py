@@ -30,6 +30,23 @@ def get_script_dir(run):
     bdir=get_basedir()
     return os.path.join(bdir, run, 'scripts')
 
+def get_stars_script_file(run, index):
+    """
+    get the script file path
+    """
+    dir=get_script_dir(run)
+    fname='psfsim-stars-%s-%04d.sh' % (run, index)
+    return os.path.join(dir, fname)
+
+def get_stars_wq_file(run, index):
+    """
+    get the script file path
+    """
+    dir=get_script_dir(run)
+    fname='psfsim-stars-%s-%04d.yaml' % (run, index)
+    return os.path.join(dir, fname)
+
+
 def get_output_dir(run):
     """
     The script directory $PSFSIM_DIR/{run}/output
@@ -52,6 +69,41 @@ def get_stars_file(run, index):
     fname=pattern % (run, index)
 
     return os.path.join(dir, fname)
+
+def get_stars_log_file(run, index):
+    """
+    location of the log file
+    """
+    oname=get_stars_file(run, index)
+    fname=oname.replace('.fits', '.log')
+    assert oname != fname
+    return fname
+
+def get_gals_file_pattern():
+    """
+    get the pattern for star files
+    """
+    return 'psfsim-gals-%s-%04d.fits'
+
+def get_gals_file(run, index):
+    """
+    get the path to a gals file
+    """
+    dir=get_output_dir(run)
+    pattern=get_gals_file_pattern(run)
+    fname=pattern % (run, index)
+
+    return os.path.join(dir, fname)
+
+def get_gals_log_file(run, index):
+    """
+    location of the log file
+    """
+    oname=get_gals_file(run, index)
+    fname=oname.replace('.fits', '.log')
+    assert oname != fname
+    return fname
+
 
 #
 # configuration files
@@ -79,8 +131,6 @@ def read_stars_config(run):
     """
     read the yaml config file
     """
-    import yaml
-
     fname= get_stars_config_file(run)
     return read_yaml(fname)
 
@@ -97,7 +147,6 @@ def read_gals_config(run):
     """
     read the yaml config file
     """
-    import yaml
     fname = get_gals_config_file(run)
     return read_yaml(fname)
 
@@ -105,6 +154,7 @@ def read_yaml(fname):
     """
     wrapper to read yaml files
     """
+    import yaml
     print("reading:",fname)
     with open(fname) as fobj:
         data=yaml.load( fobj )
