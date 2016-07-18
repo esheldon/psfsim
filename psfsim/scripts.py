@@ -1,4 +1,5 @@
 from __future__ import print_function
+import os
 
 from . import files
 
@@ -17,7 +18,7 @@ class ScriptWriter(dict):
         your environment
     """
 
-    def __init__(self, run, extra_commands='', system='wq'):
+    def __init__(self, run, system, extra_commands=''):
         self['run'] = run
         self['extra_commands'] = extra_commands
         self['system'] = system
@@ -45,7 +46,7 @@ class ScriptWriter(dict):
         """
         self['jobnum'] = index + 1
         # temporary
-        self['config_file'] = self['stars_config_file'],
+        self['config_file'] = self['stars_config_file']
 
         text=_script_template % self
 
@@ -58,9 +59,9 @@ class ScriptWriter(dict):
         """
         write the wq submission script
         """
-        wq_fname=files.get_wq_file(self['run'], index)
+        wq_fname=files.get_stars_wq_file(self['run'], index)
 
-        self['job_name'] = 'psfsim-stars-%s-%04d.yaml' % (self['run'], index)
+        self['job_name'] = 'psfsim-stars-%s-%04d' % (self['run'], index)
         self['logfile'] = files.get_stars_log_file(self['run'],index)
         self['script']=files.get_stars_script_file(self['run'], index)
         text = _wq_template  % self
@@ -100,19 +101,19 @@ class ScriptWriter(dict):
 _script_template = """#!/bin/bash
 # set up environment before running this script
 
-galsim -n %(nfiles)d -j %(jobnum)d %(config_file)s
+galsim -n %(njobs)d -j %(jobnum)d %(config_file)s
 """
 
 _wq_template = """#!/bin/bash
 command: |
     %(extra_commands)s
 
-    logfile=%(logfile)s
-    tmp_logfile=$(basename $logfile)
-    tmp_logfile=$TMPDIR/tmp_logfile
-    %(script)s &> $tmp_logfile
+    logfile="%(logfile)s"
+    tmp_logfile="$(basename $logfile)"
+    tmp_logfile="$TMPDIR/$tmp_logfile"
+    bash %(script)s &> "$tmp_logfile"
 
-    mv -vf $tmp_logfile $logfile
+    mv -vf "$tmp_logfile" "$logfile"
 
-job_name: %(job_name)
+job_name: "%(job_name)s"
 """
