@@ -54,5 +54,5 @@ Optional Dependencies
 
 to use the scripts you will need to have
 
-- galsim
-- galsim_extra
+- galsim https://github.com/GalSim-developers/GalSim
+- galsim_extra https://github.com/esheldon/galsim_extra
