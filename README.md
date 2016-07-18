@@ -1,5 +1,9 @@
 # psfsim
-PSF simulations for testing psf modeling, interpolation, and shear recovery
+
+Framework for running PSF simulations for testing psf modeling, interpolation,
+and shear recovery.  Any galsim config files can be used, but we are
+co-developing a set of scripts in the https://github.com/esheldon/psfsim_config
+repository
 
 Examples
 --------
