@@ -5,7 +5,7 @@ Examples
 --------
 
 
-```python
+```bash
 # write scripts for run v001, for the wq batch system
 
 psfsim-make-scripts v001 wq
