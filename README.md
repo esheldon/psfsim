@@ -43,8 +43,12 @@ Dependencies
 
 - pyyaml
 
+Optional Dependencies
+---------------------
+
+- psfsim_config - this repo holds some configuration files
+
 to use the scripts you will need to have
 
 - galsim
 - galsim_extra
-
