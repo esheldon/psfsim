@@ -65,7 +65,7 @@ def get_stars_file(run, index):
     get the path to a stars file
     """
     dir=get_output_dir(run)
-    pattern=get_stars_file_pattern(run)
+    pattern=get_stars_file_pattern()
     fname=pattern % (run, index)
 
     return os.path.join(dir, fname)
@@ -90,7 +90,7 @@ def get_gals_file(run, index):
     get the path to a gals file
     """
     dir=get_output_dir(run)
-    pattern=get_gals_file_pattern(run)
+    pattern=get_gals_file_pattern()
     fname=pattern % (run, index)
 
     return os.path.join(dir, fname)
