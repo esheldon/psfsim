@@ -37,7 +37,8 @@ def get_stars_script_file(run, index):
     get the script file path
     """
     dir=get_script_dir(run)
-    fname='psfsim-stars-%s-'+nfmt+'.sh' % (run, index)
+    fmt='psfsim-stars-%s-'+nfmt+'.sh'
+    fname=fmt % (run, index)
     return os.path.join(dir, fname)
 
 def get_stars_wq_file(run, index):
@@ -45,7 +46,8 @@ def get_stars_wq_file(run, index):
     get the script file path
     """
     dir=get_script_dir(run)
-    fname='psfsim-stars-%s-'+nfmt+'.yaml' % (run, index)
+    fmt='psfsim-stars-%s-'+nfmt+'.yaml'
+    fname=fmt % (run, index)
     return os.path.join(dir, fname)
 
 

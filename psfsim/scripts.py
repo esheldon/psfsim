@@ -68,7 +68,8 @@ class ScriptWriter(dict):
         wq_fname=files.get_stars_wq_file(self['run'], index)
 
         nfmt=files.nfmt
-        self['job_name'] = 'psfsim-stars-%s-'+nfmt % (self['run'], index)
+        job_fmt = 'psfsim-stars-%s-'+nfmt
+        self['job_name'] = job_fmt % (self['run'], index)
         self['logfile'] = files.get_stars_log_file(self['run'],index)
         self['script']=files.get_stars_script_file(self['run'], index)
         text = _wq_template  % self
