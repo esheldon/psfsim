@@ -72,6 +72,24 @@ def get_stars_file(run, index):
 
     return os.path.join(dir, fname)
 
+def get_stars_truth_file_pattern():
+    """
+    get the pattern for star files
+    """
+    return 'psfsim-stars-truth-%s-'+nfmt+'.fits'
+
+
+def get_stars_truth_file(run, index):
+    """
+    get the path to a stars file
+    """
+    dir=get_output_dir(run)
+    pattern=get_stars_truth_file_pattern()
+    fname=pattern % (run, index)
+
+    return os.path.join(dir, fname)
+
+
 def get_stars_log_file(run, index):
     """
     location of the log file
@@ -96,6 +114,25 @@ def get_gals_file(run, index):
     fname=pattern % (run, index)
 
     return os.path.join(dir, fname)
+
+def get_gals_truth_file_pattern():
+    """
+    get the pattern for star files
+    """
+    return 'psfsim-gals-truth-%s-'+nfmt+'.fits'
+
+
+def get_gals_truth_file(run, index):
+    """
+    get the path to a gals file
+    """
+    dir=get_output_dir(run)
+    pattern=get_gals_truth_file_pattern()
+    fname=pattern % (run, index)
+
+    return os.path.join(dir, fname)
+
+
 
 def get_gals_log_file(run, index):
     """
