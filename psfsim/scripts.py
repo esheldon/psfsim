@@ -13,12 +13,15 @@ class ScriptWriter(dict):
         run identifier
     system: string
         Queue system.  Currently supports wq.
+    njobs: int, optional
+        Number of jobs to use.  Default is a jobs for
+        each output file
     extra_commands: string
         Extra shell commands to run, e.g. for setting up
         your environment
     """
 
-    def __init__(self, run, system, extra_commands=''):
+    def __init__(self, run, system, njobs=None, extra_commands=''):
         self['run'] = run
         self['extra_commands'] = extra_commands
         self['system'] = system
@@ -26,7 +29,10 @@ class ScriptWriter(dict):
         self._load_config()
         self._makedirs()
 
-        self['njobs']=self.conf['output']['nfiles']
+        if njobs is not None:
+            self['njobs'] = njobs
+        else:
+            self['njobs']=self.conf['output']['nfiles']
 
     def write_scripts(self):
         """
@@ -61,7 +67,8 @@ class ScriptWriter(dict):
         """
         wq_fname=files.get_stars_wq_file(self['run'], index)
 
-        self['job_name'] = 'psfsim-stars-%s-%04d' % (self['run'], index)
+        nfmt=files.nfmt
+        self['job_name'] = 'psfsim-stars-%s-'+nfmt % (self['run'], index)
         self['logfile'] = files.get_stars_log_file(self['run'],index)
         self['script']=files.get_stars_script_file(self['run'], index)
         text = _wq_template  % self

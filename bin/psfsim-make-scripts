@@ -8,6 +8,8 @@ parser=ArgumentParser()
 
 parser.add_argument('run', help='processing run')
 parser.add_argument('system', help='queue system to use')
+parser.add_argument('--njobs', type=int,
+                    help='number of jobs to use, default is one job per output file')
 parser.add_argument('--extra-commands', default='',
                     help='extra commands to run, e.g. to set up environment')
 
@@ -17,6 +19,7 @@ def main():
     writer=psfsim.scripts.ScriptWriter(
         args.run,
         args.system,
+        njobs=args.njobs,
         extra_commands=args.extra_commands,
     )
 

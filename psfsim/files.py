@@ -5,6 +5,8 @@ import os
 # data directory structure
 #
 
+nfmt='%06d'
+
 def get_basedir():
     """
     The base directory $PSFSIM_DIR.
@@ -35,7 +37,7 @@ def get_stars_script_file(run, index):
     get the script file path
     """
     dir=get_script_dir(run)
-    fname='psfsim-stars-%s-%04d.sh' % (run, index)
+    fname='psfsim-stars-%s-'+nfmt+'.sh' % (run, index)
     return os.path.join(dir, fname)
 
 def get_stars_wq_file(run, index):
@@ -43,7 +45,7 @@ def get_stars_wq_file(run, index):
     get the script file path
     """
     dir=get_script_dir(run)
-    fname='psfsim-stars-%s-%04d.yaml' % (run, index)
+    fname='psfsim-stars-%s-'+nfmt+'.yaml' % (run, index)
     return os.path.join(dir, fname)
 
 
@@ -58,7 +60,7 @@ def get_stars_file_pattern():
     """
     get the pattern for star files
     """
-    return 'psfsim-stars-%s-%04d.fits'
+    return 'psfsim-stars-%s-'+nfmt+'.fits'
 
 def get_stars_file(run, index):
     """
@@ -83,7 +85,7 @@ def get_gals_file_pattern():
     """
     get the pattern for star files
     """
-    return 'psfsim-gals-%s-%04d.fits'
+    return 'psfsim-gals-%s-'+nfmt+'.fits'
 
 def get_gals_file(run, index):
     """
