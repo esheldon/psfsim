@@ -33,7 +33,10 @@ Examples running the sims
 ---------------------------
 
 ```bash
-# write scripts for run v001, for the wq batch system
+# write scripts for a run named v001
+# - the config file must live in $PSFSIM_CONFIG_DIR/psfsim-stars-${run}.yaml
+# - currently we write stars only images
+# - use the wq batch system to run jobs
 
 psfsim-make-scripts v001 wq
 
