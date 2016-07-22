@@ -38,12 +38,14 @@ Examples running the sims
 # - currently we write stars only images
 # - use the wq batch system to run jobs
 
-psfsim-make-scripts v001 wq
+run=v001
+system=wq
+psfsim-make-scripts $run $system
 
 # You can also have some additional commands run.  For
 # example, this sets up an anaconda environment
 
-psfsim-make-scripts v001 wq --extra-commands="source activate psfsim"
+psfsim-make-scripts $run $system --extra-commands="source activate psfsim"
 
 # the above write scripts into $PSFSIM_DIR/$run/scripts
 
