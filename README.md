@@ -8,6 +8,7 @@ co-developing a set of scripts in the https://github.com/esheldon/psfsim_config
 repository
 
 Examples accessing output files.
+--------------------------------
 
 ```python
 # make sure the PSFSIM_DIR environment variable is set to the base directory
