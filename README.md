@@ -66,17 +66,13 @@ To find file paths, you need the PSFSIM_DIR environment variable set
 
 To run the sims, you also need the PSFSIM_CONFIG_DIR environment variable set
 
-Dependencies
-------------
+Dependencies for running sims
+-----------------------------
 
-- pyyaml
+- galsim and all its dependencies
+- galsim_extra https://github.com/esheldon/galsim_extra
 
 Optional Dependencies
 ---------------------
 
-- psfsim_config - this repo holds some configuration files
-
-to use the scripts you will need to have
-
-- galsim https://github.com/GalSim-developers/GalSim
-- galsim_extra https://github.com/esheldon/galsim_extra
+- psfsim_config - this repo holds our official configuration files
