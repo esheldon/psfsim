@@ -28,8 +28,8 @@ files.get_stars_truth_file(run, index)
 '/gpfs/mnt/gpfs01/astro/workarea/esheldon/lensing/des-lensing/psfsim/v006/output/psfsim-stars-truth-v006-008842.fits'
 ```
 
-Examples
---------
+Examples running the sims
+---------------------------
 
 ```bash
 # write scripts for run v001, for the wq batch system
