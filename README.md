@@ -37,7 +37,8 @@ Examples running the sims
 
 psfsim-make-scripts v001 wq
 
-# set up some environment
+# You can also have some additional commands run.  For
+# example, this sets up an anaconda environment
 
 psfsim-make-scripts v001 wq --extra-commands="source activate psfsim"
 
