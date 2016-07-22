@@ -62,7 +62,9 @@ ls $PSFSIM_DIR/v001/output/psfsim-stars-v001-0017.log
 Setup
 -----
 
-You need the PSFSIM_DIR and PSFSIM_CONFIG_DIR environment variables set
+To find file paths, you need the PSFSIM_DIR environment variable set
+
+To run the sims, you also need the PSFSIM_CONFIG_DIR environment variable set
 
 Dependencies
 ------------
