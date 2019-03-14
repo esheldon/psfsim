@@ -7,6 +7,15 @@ import os
 
 nfmt='%06d'
 
+def get_temp_dir():
+    """
+    temporary directory
+
+    for wq we want to use TMPDIR for wq log files to
+    prevent too many open files on gpfs
+    """
+    return os.environ['TMPDIR']
+
 def get_basedir():
     """
     The base directory $PSFSIM_DIR.
@@ -41,11 +50,16 @@ def get_stars_script_file(run, index):
     fname=fmt % (run, index)
     return os.path.join(dir, fname)
 
+def get_wq_dir(run):
+    dir=get_temp_dir()
+    return os.path.join(dir, 'psfsim', run, 'wq')
+
 def get_stars_wq_file(run, index):
     """
     get the script file path
     """
-    dir=get_script_dir(run)
+
+    dir=get_wq_dir(run)
     fmt='psfsim-stars-%s-'+nfmt+'.yaml'
     fname=fmt % (run, index)
     return os.path.join(dir, fname)

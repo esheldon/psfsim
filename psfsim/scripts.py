@@ -86,6 +86,9 @@ class ScriptWriter(dict):
 
         dirs=[script_dir]
 
+        if self['system']=='wq':
+            dirs += [files.get_wq_dir(self['run'])]
+
         for d in dirs:
             if not os.path.exists(d):
                 try:
